@@ -1,0 +1,11 @@
+services:
+  bot:
+    image: selfbot_discord
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - IA_URL=http://127.0.0.1:11434/api/generate
