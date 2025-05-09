@@ -1,14 +1,16 @@
-FROM node:18
+FROM node:16
 
-# Définir le répertoire de travail
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier package.json et installer les dépendances
-COPY package*.json ./
+# Copier les fichiers package.json et package-lock.json dans le conteneur
+COPY package.json package-lock.json ./
+
+# Installer les dépendances
 RUN npm install
 
-# Copier le reste des fichiers de l'application
+# Copier le reste des fichiers du projet
 COPY . .
 
-# Démarrer l'application
+# Commande par défaut pour démarrer l'application
 CMD ["node", "main.js"]
